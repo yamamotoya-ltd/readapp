@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "readapp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "readapp",
+      "database_id": "REPLACE_WITH_D1_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    { "binding": "BUCKET", "bucket_name": "readapp-audio" }
+  ],
+  "queues": {
+    "producers": [{ "binding": "QUEUE", "queue": "readapp-jobs" }],
+    "consumers": [
+      { "queue": "readapp-jobs", "max_batch_size": 1, "max_retries": 3 }
+    ]
+  },
+
+  // Secret GOOGLE_TTS_API_KEY is NOT defined here.
+  // Set it with: wrangler secret put GOOGLE_TTS_API_KEY
+  "vars": {
+    "TTS_VOICE_JA": "ja-JP-Chirp3-HD-Aoede",
+    "TTS_VOICE_EN": "en-US-Chirp3-HD-Aoede",
+    "MONTHLY_CHAR_LIMIT": "900000",
+    "MAX_CHARS_PER_EPISODE": "50000",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  }
+}

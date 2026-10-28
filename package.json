@@ -1,0 +1,20 @@
+{
+  "name": "readapp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.23",
+    "@cloudflare/workers-types": "^4",
+    "typescript": "^5",
+    "@vitest/runner": "^4.1",
+    "@vitest/snapshot": "^4.1",
+    "vitest": "^4.1",
+    "wrangler": "^4"
+  }
+}
