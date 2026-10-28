@@ -30,6 +30,8 @@
     "TTS_VOICE_EN": "en-US-Chirp3-HD-Aoede",
     "MONTHLY_CHAR_LIMIT": "900000",
     "MAX_CHARS_PER_EPISODE": "50000",
+    // e.g. "yamamotoya.cloudflareaccess.com" and the Application Audience (AUD) tag from Zero Trust.
+    // Left empty, every protected page answers 401 (fail closed).
     "ACCESS_TEAM_DOMAIN": "",
     "ACCESS_AUD": ""
   }

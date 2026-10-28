@@ -12,10 +12,10 @@ describe("scaffold", () => {
     expect(await res.text()).toBe("ok");
   });
 
-  it("unknown path returns 404 JSON", async () => {
+  it("unknown path is behind Access (401 when unauthenticated)", async () => {
     const res = await call("/nope");
-    expect(res.status).toBe(404);
-    expect(await res.json()).toEqual({ error: "not found" });
+    expect(res.status).toBe(401);
+    expect(await res.json()).toEqual({ error: "unauthorized" });
   });
 
   it("episodes table exists after migrations", async () => {

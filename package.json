@@ -11,10 +11,13 @@
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.23",
     "@cloudflare/workers-types": "^4",
-    "typescript": "^5",
     "@vitest/runner": "^4.1",
     "@vitest/snapshot": "^4.1",
+    "typescript": "^5",
     "vitest": "^4.1",
     "wrangler": "^4"
+  },
+  "dependencies": {
+    "jose": "^6.2.13"
   }
 }
