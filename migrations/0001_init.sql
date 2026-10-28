@@ -10,6 +10,7 @@ CREATE TABLE episodes (
   audio_key TEXT,
   audio_bytes INTEGER,
   duration_sec INTEGER,
+  audio_ms INTEGER NOT NULL DEFAULT 0,
   source_url TEXT,
   created_at TEXT NOT NULL
 );

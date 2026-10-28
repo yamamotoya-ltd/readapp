@@ -15,6 +15,7 @@ export interface Episode {
   audio_key: string | null;
   audio_bytes: number | null;
   duration_sec: number | null;
+  audio_ms: number; // running total while chunks are processed
   source_url: string | null;
   created_at: string; // ISO 8601 UTC
 }

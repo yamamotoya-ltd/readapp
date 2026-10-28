@@ -17,6 +17,7 @@ function ep(over: Partial<Episode> & { id: string }): Episode {
     audio_key: `${over.id}.mp3`,
     audio_bytes: 1000,
     duration_sec: 60,
+    audio_ms: 60000,
     source_url: null,
     created_at: '2026-01-01T00:00:00.000Z',
     ...over,

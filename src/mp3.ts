@@ -87,7 +87,7 @@ export function concatMp3(parts: Uint8Array[]): Uint8Array {
 }
 
 // Adds up every frame, so the result is right for both constant and variable bitrate files.
-export function mp3DurationSec(b: Uint8Array): number {
+export function mp3DurationMs(b: Uint8Array): number {
   let i = firstFrameOffset(b, id3v2Size(b));
   if (i < 0) return 0;
   let seconds = 0;
@@ -95,5 +95,7 @@ export function mp3DurationSec(b: Uint8Array): number {
     seconds += f.samples / f.sampleRate;
     i += f.length;
   }
-  return Math.round(seconds);
+  return Math.round(seconds * 1000);
 }
+
+export const mp3DurationSec = (b: Uint8Array) => Math.round(mp3DurationMs(b) / 1000);

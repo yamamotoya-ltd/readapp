@@ -1,4 +1,5 @@
 import type { Env, JobMessage } from "./env";
+import { handleJob } from "./pipeline";
 
 export default {
   async fetch(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
@@ -9,10 +10,9 @@ export default {
     return Response.json({ error: "not found" }, { status: 404 });
   },
 
-  async queue(batch: MessageBatch<JobMessage>, _env: Env, _ctx: ExecutionContext): Promise<void> {
-    // TODO: delegate to pipeline.ts (Task 6)
+  async queue(batch: MessageBatch<JobMessage>, env: Env, _ctx: ExecutionContext): Promise<void> {
     for (const msg of batch.messages) {
-      msg.ack();
+      await handleJob(env, msg);
     }
   },
 } satisfies ExportedHandler<Env, JobMessage>;
